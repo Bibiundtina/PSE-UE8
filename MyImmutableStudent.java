@@ -7,6 +7,21 @@
  */
 public class MyImmutableStudent
 {
-   public MyImmutableStudent(){
-    }
+   private final int mnr;
+   private final String name;
+   private final Address address;
+   public MyImmutableStudent( final int mnr, final String name, final Address address){
+       this.mnr=mnr;
+       this.name= name;
+       this.address = address;
+   }
+   public int getMnr(){
+       return mnr;
+   }
+   public String getName(){
+       return name;
+   }
+   void changeMnrTo0(){
+       /*this.mnr=0;*/
+   }
 }
