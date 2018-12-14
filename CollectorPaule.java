@@ -49,12 +49,11 @@ public class CollectorPaule extends SimpleHamsterGame
     
     
     void testFail() {
-        /* laufe zu einem leeren feld*/
         collectTen();
     }
     
     void testNotAllGrains() {
-        /* laufe zu dem Feld mit mehr als 10 Körnern '*/
+        multiMove (6);
         collectTen();
     }
     

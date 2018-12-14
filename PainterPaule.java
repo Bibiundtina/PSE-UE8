@@ -13,7 +13,7 @@ import java.io.IOException;
 public class PainterPaule extends SimpleHamsterGame
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private String binary;
 
     /**
      * Constructor for objects of class PainterPaule
@@ -44,16 +44,96 @@ public class PainterPaule extends SimpleHamsterGame
      * space() - space after a digit one or zero put paule to ready position
      *           for the next digit
      */
-    public void testPaintingOne(){
-        //initialPosition();
-        //paintZero();
-        //space();
-        //paintZero();
-        //space();
-        //paintOne();     
-    }
    
+    void fillTile() {
+        for ( int i = 0; i < 12; i++ ) {
+            paule.putGrain();
+        }
+    }
     
+    void fillThreeTiles() {
+        for ( int i = 0; i < 2; i++) {
+            fillTile();
+            paule.move();    
+        }
+        fillTile();
+    }
     
+    void turnRight() {
+        for ( int i = 0; i < 3; i++) {
+            paule.turnLeft();
+        }
+    }
     
+    //@ requires Paule is standing in the top left corner of a 3x3 square and facing EAST
+    //@ ensures Paule "paints" the number 1
+    //@ ensures Paule moves to the tile right of the 3x3 square in the top row
+    void paintOne() {
+        paule.move();
+        turnRight();
+        fillThreeTiles();
+        paule.turnLeft();
+        multiMove (2);
+        paule.turnLeft();
+        multiMove (2);
+        turnRight();
+    }
+    
+    //@ requires Paule is standing in the top left corner of a 3x3 square and facing EAST
+    //@ ensures Paule "paints" the number 0
+    //@ ensures Paule moves to the tile right of the 3x3 square in the top row
+    void paintZero() {
+        for (int i = 0; i < 2; i++) {
+            fillThreeTiles();
+            turnRight();
+            paule.move();
+            fillTile();
+            paule.move();
+            turnRight();
+        }
+        multiMove (3);
+    }
+    
+    //@ requires Paule standing on the top row tile next to an 3x3 square
+    //@ ensures Paule creates a blank space by moving one space towards east
+    void makeSpace() {
+        paule.move();
+    }
+    
+    void testPaintingOne() {
+        paintZero();
+        makeSpace();
+        paintZero();
+        makeSpace();
+        paintOne();
+    }
+    
+    //@ requires number > 0
+    //@ ensures a new String with the binary value of the int input
+    String integerToBinary (int number) {
+        Integer integer = new Integer (number);
+        return integer.toBinaryString (number);
+    }
+    
+    void paintDigit (int inputNumber) {
+        if (inputNumber < 0 || inputNumber > 7) {
+            System.out.println("The number needs to between 0 and 7");
+            /* new input request */
+        }
+        else {
+            binary = integerToBinary (inputNumber);
+            for (int i = 0; i < binary.length(); i++) {
+                int x = binary.charAt(i);
+                if  (x == 0) {
+                    paintZero();
+                }
+                else {
+                    paintOne();
+                }
+            }
+                
+        }
+    }
+    
+    /* ###### Aufgabenteil i): Für die Dezimalzahl 4 (100). ##### */
 }
