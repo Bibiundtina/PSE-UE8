@@ -5,10 +5,11 @@ import de.unistuttgart.iste.rss.oo.hamstersimulator.datatypes.Direction;
 import java.io.IOException;
 
 /**
- * Write a description of class PainterPaule here.
+ * The collector class contains methods, that allow paule to pick up more than one grain. 
+ * The class also contains methods testing different error sources.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Nikita Paffenroth, Niklas Mertens
+ * @version 1.0
  */
 public class CollectorPaule extends SimpleHamsterGame
 {
@@ -28,11 +29,42 @@ public class CollectorPaule extends SimpleHamsterGame
         }
     }
     
+    //@ requieres that there is no wall on numberOfSteps tiles in front of paule.
+    //@ requieres numberOfSteps > 0
+    //@ ensures paules position is numberOfSteps steps in front of its ealier position
     void multiMove (int numberOfSteps) {
-           
+        
         for (int i = 0; i<numberOfSteps; i++) {
             paule.move();
         }
     }
     
+    //@ requires at least 10 Grains on the current tile
+    //@ ensures paule.grainCount() += 10
+    void collectTen() {
+        for (int i = 0; i < 10; i++) {
+            paule.pickGrain();
+        }
+    }
+    
+    
+    void testFail() {
+        /* laufe zu einem leeren feld*/
+        collectTen();
+    }
+    
+    void testNotAllGrains() {
+        /* laufe zu dem Feld mit mehr als 10 Körnern '*/
+        collectTen();
+    }
+    
+    //@ ensures that paule has picked up all Grains on the current tile
+    void collectAll() {
+        while ( paule.grainAvailable() ) {
+            paule.pickGrain();
+        }
+    }
+    
 }
+
+
