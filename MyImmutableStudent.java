@@ -13,9 +13,14 @@ public class MyImmutableStudent
    public MyImmutableStudent( final int mnr, final String name, final Address address){
        this.mnr=mnr;
        this.name= name;
-       this.address = address;
+       this.address = new Address(
+        address.getStreetname(),
+        address.getStreetnumber(),
+        address.getPostalcode(),
+        address.getCityname()
+       );
    }
-   public int getMnr(){
+     public int getMnr(){
        return mnr;
    }
    public String getName(){

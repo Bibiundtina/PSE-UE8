@@ -7,10 +7,10 @@
  */
 public class Address
 {
-    private String streetname;
-    private int streetnumber;
-    private String postalcode;
-    private String cityname;
+    private final String streetname;
+    private final int streetnumber;
+    private final String postalcode;
+    private final String cityname;
     
     public Address(final String streetname,final int streetnumber,final String postalcode,final String cityname){
         this.streetname=streetname;
@@ -24,7 +24,7 @@ public class Address
     }
  
     public void setStreetname(final String streetname) {
-        this.streetname = streetname;
+        /* this.streetname = streetname; */
     }
     
     public int getStreetnumber() {
@@ -32,7 +32,7 @@ public class Address
     }
  
     public void setStreetnumber(final int streetnumber) {
-        this.streetnumber = streetnumber;
+        /* this.streetnumber = streetnumber; */
     }
     
     public String getPostalcode() {
@@ -40,7 +40,7 @@ public class Address
     }
  
     public void setPostalcode(final String postalcode) {
-        this.postalcode = postalcode;
+        /* this.postalcode = postalcode; */
     }
  
  
@@ -49,6 +49,6 @@ public class Address
     }
  
     public void setCityname(final String cityname) {
-        this.cityname = cityname;
+       /* this.cityname = cityname; */
     }
 }
