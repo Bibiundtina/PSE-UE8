@@ -123,15 +123,15 @@ public class PainterPaule extends SimpleHamsterGame
         else {
             binary = integerToBinary (inputNumber);
             for (int i = 0; i < binary.length(); i++) {
-                int x = binary.charAt(i);
+                int x = Character.getNumericValue(binary.charAt(i));
                 if  (x == 0) {
                     paintZero();
                 }
                 else {
                     paintOne();
                 }
+                if (i != binary.length()-1) makeSpace();
             }
-                
         }
     }
     

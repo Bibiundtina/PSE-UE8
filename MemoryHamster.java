@@ -24,11 +24,29 @@ public class MemoryHamster extends SimpleHamsterGame{
     
 
     public void reverseOrder(){
+          moveForwardAndPick();
           
-  
     }
     
     public void inOrder(){
-
+            
+    }
+    
+    void moveForwardAndPick() {
+        while (paule.frontIsClear()) {
+            pickAll();
+            paule.move();
+        }
+        pickAll();
+    }
+    
+    void pickAll() {
+        while (paule.grainAvailable()) {
+                paule.pickGrain();
+        }
+    }
+    
+    void moveBackAndPlace() {
+        
     }
 }
